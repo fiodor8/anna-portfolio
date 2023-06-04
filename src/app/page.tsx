@@ -1,3 +1,10 @@
+
+export const metadata = {
+  title: 'Anna Pazyuk',
+  description: 'A brand designer and art-director currently based in Istanbul',
+}
+
+
 export default function Home() {
   return (
     <>

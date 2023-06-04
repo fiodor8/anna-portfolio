@@ -147,9 +147,13 @@ export default function Menu() {
   //const menuItems = calculateMenuItems(data, size, 20);
 
   useEffect (() => {
+    const screenWidth = window.innerWidth;
     if (pathname === '/') {
       setMenuIsCollapsed(false);
-      console.log('setMenuIsCollapsed(false)')
+      //console.log('setMenuIsCollapsed(false)')
+    }
+    else if (screenWidth < 768) {
+      setMenuIsCollapsed(true);
     }
   }, [pathname]);
 
@@ -157,8 +161,9 @@ export default function Menu() {
     <div 
       id='menu'
       ref={parentRef}
-      className={'min-w-36 flex flex-col relative overflow-hidden' + ' ' + (pathname === '/' && 'flex-1')}
+      className={'overflow-hidden absolute w-full h-full top-0 left-0' + ' ' + (pathname === '/' && 'flex-1') + ' ' + {/*(menuIsCollapsed ? 'w-0' : 'w-48')*/}}
     >
+      {/* Show 'collapse menu' and 'refresh' buttons while on main page */}
         {pathname === '/' && (
         <div className="flex absolute bottom-4 right-4 z-20 gap-2">
           {/* * */}

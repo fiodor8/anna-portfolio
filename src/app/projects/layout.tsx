@@ -4,16 +4,17 @@ import { useMenuIsCollapsed } from '@/context/data';
 import Link from 'next/link';
 
 import { motion, AnimatePresence } from 'framer-motion';
+import { useEffect } from 'react';
 
 export default function ProjectLayout({ children }: { children: React.ReactNode }) {
 
   const { menuIsCollapsed, setMenuIsCollapsed } = useMenuIsCollapsed();
 
   return (
-    <div className={`flex flex-col mx-4 mb-16 relative transition-all duration-300 flex-1 ${!menuIsCollapsed ? 'ml-64' : ''}`}>
+    <div className={`flex flex-col mx-6 mb-16 relative transition-all duration-300 flex-1 ${!menuIsCollapsed ? 'ml-48' : ''}`}>
       <div className='flex justify-between sticky top-0 mt-4 mb-8'>
         <button
-          className="group transition-font duration-300 hover:font-black bg-neutral-900 bg-opacity-50 py-1 px-2 rounded-md"
+          className="group -translate-x-2 transition-font duration-300 hover:font-black bg-neutral-900 bg-opacity-50 py-1 px-2 rounded-md"
           onClick={() => setMenuIsCollapsed(!menuIsCollapsed)}
         >
           {menuIsCollapsed ?

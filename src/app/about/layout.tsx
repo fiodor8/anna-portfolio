@@ -10,7 +10,7 @@ export default function AboutLayout({ children }: { children: React.ReactNode })
   const { menuIsCollapsed, setMenuIsCollapsed } = useMenuIsCollapsed();
 
   return (
-    <div className={`flex flex-col mx-4 mb-16 relative transition-all duration-300 flex-1 ${!menuIsCollapsed ? 'ml-64' : ''}`}>
+    <div className={`flex flex-col mx-4 mb-16 relative transition-all duration-300 flex-1 ${!menuIsCollapsed ? 'ml-48' : ''}`}>
       <div className='flex justify-between sticky top-0 mt-4 mb-8'>
         <button
           className="group transition-font duration-300 hover:font-black bg-neutral-900 bg-opacity-50 py-1 px-2 rounded-md"
