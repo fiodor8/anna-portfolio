@@ -3,26 +3,24 @@
 import { useMenuIsCollapsed } from '@/context/data';
 import Link from 'next/link';
 
-import { motion, AnimatePresence } from 'framer-motion';
-
 export default function AboutLayout({ children }: { children: React.ReactNode }) {
 
   const { menuIsCollapsed, setMenuIsCollapsed } = useMenuIsCollapsed();
 
   return (
-    <div className={`flex flex-col mx-4 mb-16 relative transition-all duration-300 flex-1 ${!menuIsCollapsed ? 'ml-48' : ''}`}>
+    <div className={`flex flex-col z-20 mx-4 mb-16 relative transition-all duration-300 flex-1 ${!menuIsCollapsed ? 'ml-48' : ''}`}>
       <div className='flex justify-between sticky top-0 mt-4 mb-8'>
         <button
-          className="group transition-font duration-300 hover:font-black bg-neutral-900 bg-opacity-50 py-1 px-2 rounded-md"
+          className="group -translate-x-2 transition-font duration-300 hover:font-black bg-neutral-900 bg-opacity-50 py-1 px-2 rounded-md"
           onClick={() => setMenuIsCollapsed(!menuIsCollapsed)}
         >
           {menuIsCollapsed ?
             (
               <span>
-                {/*<p>Open Menu</p>*/}
                 <svg className="group-hover:scale-150 transition-all duration-300" width="20" height="20" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                   <path clipRule="evenodd" fillRule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z"></path>
                 </svg>
+                {/*<p>Open Menu</p>*/}
               </span>
             ) :
             (

@@ -5,12 +5,12 @@ import { useData } from "../context/data";
 import { useMenuIsCollapsed } from "../context/data";
 import calculateMenuItems from "../components/calculateMenuItems";
 import Socials from "../components/socials";
-import TextRing from "../components/textRing";
+import TextRing from "../components/textRing.jsx";
 /* Framer */
 import { motion } from "framer-motion";
 /* React */
 import React from 'react';
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect, useLayoutEffect } from "react";
 /* Next */
 import { useRouter, usePathname } from 'next/navigation';
 import Link from 'next/link';
@@ -34,11 +34,10 @@ function MenuItem({ id, name, userSetIsOpen, x, y, i, size, isCurrent, type }){
       }
     }
   }
-
   setPosition(x, y, isOpen, divRef, i);
 
   return (
-    <motion.div
+    <div
       ref={divRef}
       className=
       {
@@ -62,7 +61,6 @@ function MenuItem({ id, name, userSetIsOpen, x, y, i, size, isCurrent, type }){
                 alt={name}
                 width='800'
                 height='400'
-                layout="cover"
                 onError={(e) => console.error(e.target.id)}
                 />
               }
@@ -78,13 +76,14 @@ function MenuItem({ id, name, userSetIsOpen, x, y, i, size, isCurrent, type }){
               {name}
             </p>
           </Link>
+        //
         ) : type === 'personal' ? (
           name === 'about' ? (
             <Link href="/about" className="w-full h-full flex gap-2 hover:font-black transition-font duration-300 whitespace-nowrap">
               <div className={"mx-auto aspect-square rounded-full overflow-hidden" + " "}
                 style={isOpen ? { height: '100%' } : { height: 24 }}
               >
-                <Image src="/avatar.jpg" alt="About Me" width="1200" height="1200" layout="responsive" />
+                <Image src="/avatar.jpg" alt="About Me" width="600" height="600"/>
               </div>
               {!isOpen ? (<p>About Me</p>) : null}
               {isOpen ? (
@@ -94,7 +93,7 @@ function MenuItem({ id, name, userSetIsOpen, x, y, i, size, isCurrent, type }){
           ) : null
         ) : null
       }
-    </motion.div>
+    </div>
   )
 }
 
@@ -113,17 +112,20 @@ export default function Menu() {
   /* Router */
   const pathname = usePathname();
 
-  useEffect(() => {
-    const calculatedItems = calculateMenuItems(data, size, 20);
-    setMenuItems(calculatedItems);
-  }, [data, size]);
-
+  //recalc position of menu items by call
   const refreshGrid = () => {
     const updatedItems = calculateMenuItems(data, size, 40);
     setMenuItems(updatedItems);
   };
 
+  //recalculate poisition of the menu items when screen size is changes
   useEffect(() => {
+    const calculatedItems = calculateMenuItems(data, size, 40);
+    setMenuItems(calculatedItems);
+  }, [data, size]);
+  
+  //handle screen resize
+  useLayoutEffect(() => {
     function handleResize() {
       if (parentRef.current) {
         const width = parentRef.current.offsetWidth;
@@ -132,7 +134,6 @@ export default function Menu() {
       }
     }
     handleResize();
-
     const resizeObserver = new ResizeObserver(handleResize);
     if (parentRef.current) {
       resizeObserver.observe(parentRef.current);
@@ -144,13 +145,11 @@ export default function Menu() {
     };
   }, []);
 
-  //const menuItems = calculateMenuItems(data, size, 20);
-
-  useEffect (() => {
+  //prevent menu collapsing on main page and automate it on screen less the 768px
+  useLayoutEffect (() => {
     const screenWidth = window.innerWidth;
     if (pathname === '/') {
       setMenuIsCollapsed(false);
-      //console.log('setMenuIsCollapsed(false)')
     }
     else if (screenWidth < 768) {
       setMenuIsCollapsed(true);
@@ -161,7 +160,7 @@ export default function Menu() {
     <div 
       id='menu'
       ref={parentRef}
-      className={'overflow-hidden absolute w-full h-full top-0 left-0' + ' ' + (pathname === '/' && 'flex-1') + ' ' + {/*(menuIsCollapsed ? 'w-0' : 'w-48')*/}}
+      className='overflow-hidden z-10 absolute w-full h-full top-0 left-0'
     >
       {/* Show 'collapse menu' and 'refresh' buttons while on main page */}
         {pathname === '/' && (
@@ -207,7 +206,7 @@ export default function Menu() {
         </div>
         )}
       {/* * */}
-      <ul
+      <div
         className={`relative transition-all duration-300`}
         style={menuIsCollapsed ? { opacity: 0 } : {}}
       >
@@ -224,7 +223,7 @@ export default function Menu() {
               isCurrent={pathname === ("/projects/" + value.id)}
             />
         ))}
-      </ul>
+      </div>
       {/* * */}
       <Socials />
     </div>

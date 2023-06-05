@@ -1,5 +1,3 @@
-import { useMemo } from 'react';
-
 import lloydsAlgorithm from "../algorithms/lloyds-algorithm";
 import calculateAverageDistance from "../algorithms/calculate-average-distance";
 
