@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   version="1.1"
+   id="svg2"
+   width="1333.3333"
+   height="1333.3333"
+   viewBox="0 0 1333.3333 1333.3333"
+   sodipodi:docname="Anya_logo.ai"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs6">
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath18">
+      <path
+         d="M 0,1000 H 1000 V 0 H 0 Z"
+         id="path16" />
+    </clipPath>
+  </defs>
+  <sodipodi:namedview
+     id="namedview4"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1" />
+  <g
+     id="g8"
+     inkscape:groupmode="layer"
+     inkscape:label="Anya_logo"
+     transform="matrix(1.3333333,0,0,-1.3333333,0,1333.3333)">
+    <path
+       d="M 0,0.852 H 1000 V 1000 H 0 Z"
+       style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       id="path10" />
+    <g
+       id="g12">
+      <g
+         id="g14"
+         clip-path="url(#clipPath18)">
+        <g
+           id="g20"
+           transform="translate(507.3244,586.2184)">
+          <path
+             d="m 0,0 c 0.295,-2.181 0.575,-4.404 0.823,-6.718 1.594,-14.882 2.392,-32.953 2.392,-54.213 0,-86.817 -16.833,-130.216 -50.492,-130.216 -30.972,0 -47.058,31.721 -48.282,95.137 l -175.542,-176.372 c 2.395,-4.774 4.89,-9.417 7.505,-13.903 31.533,-53.864 74.227,-80.788 128.091,-80.788 62.002,0 111.431,36.143 148.287,108.425 -1.063,-10.628 -2.125,-24.631 -3.188,-41.987 C 8.53,-318 7.11,-336.246 5.341,-355.379 h 213.661 v 574.547 h -0.865 z"
+             style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             id="path22" />
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>
